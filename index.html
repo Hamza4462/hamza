@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hamza Saif - Portfolio</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a2d9d6fdf5.js" crossorigin="anonymous"></script>
+
+  <!-- Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  <style>
+    * { scroll-behavior: smooth; transition: background 0.6s, color 0.6s; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      overflow-x: hidden;
+      color: white;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+    }
+
+    /* Glow Navbar */
+    .navbar {
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+    .navbar-brand, .nav-link {
+      color: #fff !important;
+      text-shadow: 0 0 10px #00ffee;
+    }
+    .nav-link:hover {
+      color: #00ffee !important;
+      text-shadow: 0 0 20px #00ffee;
+    }
+
+    /* General Section Styling */
+    section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+    }
+
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    /* Profile Image */
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 4px solid #00ffee;
+      box-shadow: 0 0 40px #00ffee;
+      object-fit: cover;
+      z-index: 2;
+    }
+
+    /* Typed text glowing */
+    .typed-text {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-top: 25px;
+      color: #fff;
+      text-shadow: 0 0 25px #00ffee, 0 0 40px #6a11cb;
+      animation: glowText 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glowText {
+      from { text-shadow: 0 0 10px #00ffee, 0 0 20px #6a11cb; }
+      to { text-shadow: 0 0 30px #00ffee, 0 0 50px #2575fc; }
+    }
+
+    /* Description */
+    .description {
+      max-width: 700px;
+      font-size: 1.1rem;
+      margin-top: 20px;
+      color: #eaeaea;
+      z-index: 2;
+      text-shadow: 0 0 10px rgba(255,255,255,0.4);
+    }
+
+    /* Social Icons */
+    .social-icons a {
+      color: #fff;
+      font-size: 1.8rem;
+      margin: 0 10px;
+      transition: all 0.3s;
+      text-shadow: 0 0 10px rgba(255,255,255,0.4);
+    }
+    .social-icons a:hover {
+      transform: scale(1.2);
+      color: #00ffee;
+      text-shadow: 0 0 25px #00ffee;
+    }
+
+    /* Animated Scroll Arrow */
+    .scroll-down {
+      position: absolute;
+      bottom: 30px;
+      font-size: 2.2rem;
+      color: #00ffee;
+      animation: bounce 1.5s infinite, glowArrow 1.5s ease-in-out infinite alternate;
+      cursor: pointer;
+      z-index: 2;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+    @keyframes glowArrow {
+      from { text-shadow: 0 0 10px #00ffee, 0 0 20px #6a11cb; }
+      to { text-shadow: 0 0 30px #00ffee, 0 0 50px #2575fc; }
+    }
+
+    /* Project Cards */
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid #00ffee;
+      border-radius: 20px;
+      padding: 30px;
+      color: white;
+      transition: all 0.3s;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+    }
+    .project-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.8);
+    }
+
+    /* Cyberpunk Button */
+    .btn-gradient {
+      background: none;
+      border: 2px solid #00ffee;
+      color: #fff;
+      text-shadow: 0 0 10px #00ffee;
+      border-radius: 30px;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+    }
+    .btn-gradient:hover {
+      background: #00ffee;
+      color: #111;
+      transform: scale(1.05);
+      box-shadow: 0 0 40px #00ffee;
+    }
+
+    /* Contact Card */
+    .contact-card {
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid #00ffee;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+      border-radius: 20px;
+      padding: 40px;
+      color: white;
+    }
+
+    /* Glow Footer */
+    footer {
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      text-align: center;
+      padding: 15px;
+      box-shadow: 0 0 30px #00ffee;
+      text-shadow: 0 0 10px #00ffee;
+    }
+
+    /* Scroll to Top */
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #00ffee;
+      color: #111;
+      border: none;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      font-size: 1.5rem;
+      display: none;
+      cursor: pointer;
+      z-index: 1100;
+      box-shadow: 0 0 20px #00ffee;
+      transition: 0.3s;
+    }
+    #scrollTopBtn:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 40px #00ffee;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg px-3">
+    <a class="navbar-brand fw-bold" href="#home">Hamza's Portfolio</a>
+    <div class="ms-auto">
+      <a class="nav-link d-inline-block mx-2" href="#projects">Projects</a>
+      <a class="nav-link d-inline-block mx-2" href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Home -->
+  <section id="home">
+    <div id="particles-js"></div>
+    <img src="avatar.png" alt="Profile" class="profile-img" />
+    <h1 class="typed-text"></h1>
+    <h5>Registration No: FA23-BCS-153</h5>
+    <h6>COMSAT University Vehari</h6>
+    <p class="description">A passionate Software Engineer dedicated to building intelligent, creative, and user-friendly applications.</p>
+    <div class="social-icons">
+      <a href="#"><i class="fas fa-envelope"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+    </div>
+    <div class="scroll-down">↓</div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div id="particles-js"></div>
+    <div class="container">
+      <h2 class="section-title typed-text">My Projects</h2>
+      <div class="row g-4">
+        <div class="col-md-4"><div class="project-card"><h3>Pick Perfect Shopping System</h3><p>AI-based expert system recommending ideal products using PKR currency and user preferences.</p></div></div>
+        <div class="col-md-4"><div class="project-card"><h3>Student Result Management System</h3><p>Flutter MVC app managing student grades with attractive gradient UI.</p></div></div>
+        <div class="col-md-4"><div class="project-card"><h3>AI Chat Assistant</h3><p>Smart Python-based chatbot that answers academic and coding queries.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div id="particles-js"></div>
+    <div class="container">
+      <h2 class="section-title typed-text">Get in Touch</h2>
+      <div class="col-md-8 mx-auto contact-card">
+        <form>
+          <div class="mb-3"><input type="text" class="form-control" placeholder="Full Name" /></div>
+          <div class="mb-3"><input type="email" class="form-control" placeholder="Email" /></div>
+          <div class="mb-3"><textarea class="form-control" rows="4" placeholder="Message"></textarea></div>
+          <button type="submit" class="btn btn-gradient w-100 py-2">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2025 Hamza Saif | All Rights Reserved</footer>
+  <button id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    // Typed text
+    new Typed('.typed-text', {
+      strings: ["Hi, I'm Hamza Saif 👋", "Software Engineer 💻", "HTML Developer 🧠✨"],
+      typeSpeed: 60,
+      backSpeed: 35,
+      loop: true
+    });
+
+    // Particles on all sections
+    function initParticles() {
+      document.querySelectorAll('#particles-js').forEach(el => {
+        particlesJS(el.id, {
+          "particles": {
+            "number": { "value": 80 },
+            "color": { "value": "#00ffee" },
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.6, "random": true },
+            "size": { "value": 3, "random": true },
+            "move": { "speed": 1.5 },
+            "line_linked": {
+              "enable": true,
+              "distance": 150,
+              "color": "#00ffee",
+              "opacity": 0.2,
+              "width": 1
+            }
+          },
+          "retina_detect": true
+        });
+      });
+    }
+    initParticles();
+
+    // Scroll to Top
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener("scroll", () => {
+      scrollTopBtn.style.display = window.scrollY > 400 ? "block" : "none";
+    });
+    scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>
